@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>แบบบันทึกประวัติส่วนตัว — ฟอร์ม รก.๐๒</title>
+<meta name="description" content="แฟ้มประวัติฉบับสมบูรณ์ กรอกให้ครบทุกหมวด เพื่อเก็บไว้เป็นหลักฐานว่ารู้จักกันจริง">
+<meta name="theme-color" content="#E3CFC9">
+
+<!-- ▼▼ แก้ USERNAME กับ REPO ให้ตรงกับของตัวเอง เพื่อให้ตอนส่งลิงก์ในไลน์มีรูปพรีวิวขึ้น ▼▼ -->
+<meta property="og:url" content="https://USERNAME.github.io/REPO/profile.html">
+<meta property="og:image" content="https://USERNAME.github.io/REPO/og-profile.png">
+<!-- ▲▲ -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="แบบบันทึกประวัติส่วนตัว (ฟอร์ม รก.๐๒)">
+<meta property="og:description" content="แฟ้มประวัติฉบับสมบูรณ์ ๑๒ หมวด กรอกเสร็จแล้วส่งกลับได้เลย">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23FDF4F0'/><rect x='14' y='14' width='72' height='72' fill='none' stroke='%23C21F35' stroke-width='9'/><path d='M50 72 L30 52 a12 12 0 1 1 20-14 a12 12 0 1 1 20 14 Z' fill='%23C21F35'/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&family=Charmonman:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FDF4F0;
+  --ink:#2A2730;
+  --ink-soft:#796E76;
+  --rule:#D8C1BA;
+  --pen:#1F4FA3;
+  --stamp:#C21F35;
+
+  --gutter:clamp(8px, 3.2vw, 16px);
+  --pad-x:clamp(15px, 5vw, 24px);
+  --pad-y:clamp(20px, 5.5vw, 28px);
+
+  --fs-title:clamp(19px, 6.2vw, 26px);
+  --fs-sub:clamp(11px, 3.2vw, 12.5px);
+  --fs-body:clamp(14.5px, 4.1vw, 16px);
+  --fs-hand:clamp(16px, 4.6vw, 18px);
+  --fs-mono:clamp(10.5px, 3vw, 12px);
+  --fs-btn:clamp(14.5px, 4.2vw, 16px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  min-height:100%;
+  background:#E3CFC9;
+  background-image:radial-gradient(circle at 20% 10%, #EFDDD8 0%, #DCC5BE 60%, #CDB4AD 100%);
+  background-attachment:fixed;
+  font-family:"Sarabun","Noto Sans Thai",-apple-system,sans-serif;
+  color:var(--ink);
+  display:flex;justify-content:center;
+  overflow-x:hidden;
+  padding:
+    calc(var(--gutter) + env(safe-area-inset-top))
+    calc(var(--gutter) + env(safe-area-inset-right))
+    calc(var(--gutter) * 3 + env(safe-area-inset-bottom))
+    calc(var(--gutter) + env(safe-area-inset-left));
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+body, .q, .lede, .rec, .foot, label{overflow-wrap:break-word;word-break:break-word}
+button{touch-action:manipulation;-webkit-tap-highlight-color:transparent;max-width:100%}
+
+.sheet{
+  width:100%;max-width:600px;position:relative;
+  background:var(--paper);
+  background-image:repeating-linear-gradient(to bottom, rgba(216,193,186,.16) 0 1px, transparent 1px 36px);
+  box-shadow:0 1px 0 rgba(255,255,255,.7) inset, 0 18px 40px -18px rgba(60,30,30,.45);
+  padding:var(--pad-y) var(--pad-x);
+  overflow:hidden;
+}
+.sheet::before,.sheet::after{
+  content:"";position:absolute;left:0;right:0;height:9px;pointer-events:none;
+  background:radial-gradient(circle at 5px -2px, transparent 5px, var(--paper) 5.5px) 0 0/12px 9px repeat-x;
+}
+.sheet::before{top:0;transform:scaleY(-1)}
+.sheet::after{bottom:0}
+
+.masthead{border:1.5px solid var(--ink);padding:clamp(10px,3vw,13px) clamp(10px,3.4vw,14px);position:relative}
+.masthead .corner{
+  display:flex;justify-content:space-between;gap:8px;
+  font-family:"Space Mono",monospace;font-size:clamp(9px,2.7vw,10.5px);letter-spacing:.08em;
+  color:var(--ink-soft);text-transform:uppercase;line-height:1.4;
+}
+.masthead h1{font-size:var(--fs-title);font-weight:700;text-align:center;margin:clamp(6px,2vw,9px) 0 2px;line-height:1.25}
+.masthead .sub{text-align:center;font-size:var(--fs-sub);color:var(--ink-soft);letter-spacing:clamp(.04em,1vw,.12em);line-height:1.5}
+.tape{
+  position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-1.5deg);
+  background:rgba(255,241,205,.85);border-left:1px dashed rgba(0,0,0,.12);border-right:1px dashed rgba(0,0,0,.12);
+  width:clamp(80px,26vw,104px);height:22px;
+}
+.meta{
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:2px 14px;
+  font-size:var(--fs-mono);color:var(--ink-soft);margin:10px 2px 0;
+  font-family:"Space Mono",monospace;letter-spacing:.03em;line-height:1.6;
+}
+.meta b{font-family:"Sarabun",sans-serif;font-weight:600}
+.stage{margin-top:clamp(14px,4vw,18px);min-height:clamp(300px,58vw,340px)}
+.pen{font-family:"Charmonman","Sarabun",cursive;color:var(--pen);font-weight:700;line-height:1.5}
+
+/* ---------- หน้าแรก ---------- */
+.lede{font-size:var(--fs-body);margin-bottom:14px}
+.lede strong{font-weight:600}
+.notice{border:1px dashed var(--rule);padding:11px 13px;font-size:clamp(11.5px,3.3vw,12.5px);color:var(--ink-soft);margin-top:16px;line-height:1.65}
+.notice b{color:var(--ink);font-weight:600}
+.toc{list-style:none;margin:16px 0 0;font-size:clamp(12.5px,3.6vw,13.5px);color:var(--ink-soft);columns:2;column-gap:16px}
+.toc li{padding:2px 0;break-inside:avoid}
+.toc b{color:var(--ink);font-weight:600}
+
+/* ---------- หัวหมวด ---------- */
+.sechead{border-bottom:1.5px solid var(--ink);padding-bottom:8px;margin-bottom:4px}
+.sechead .no{font-size:clamp(11px,3.2vw,12px);letter-spacing:.16em;color:var(--stamp);font-weight:700}
+.sechead h2{font-size:clamp(18px,5.4vw,22px);font-weight:700;line-height:1.3;margin-top:2px}
+.sechead .desc{font-size:clamp(12px,3.5vw,13px);color:var(--ink-soft);line-height:1.55;margin-top:3px}
+
+/* ---------- ช่องกรอก ---------- */
+.field{margin-top:clamp(15px,4.4vw,19px)}
+.field label{display:block;font-size:clamp(13px,3.8vw,14.5px);color:var(--ink);line-height:1.5;margin-bottom:3px;font-weight:600}
+.field label .fno{color:var(--stamp);font-weight:700;margin-right:5px;font-size:.86em;letter-spacing:.04em}
+.field .hint{display:block;font-size:clamp(11px,3.1vw,12px);color:var(--ink-soft);font-weight:400;line-height:1.5;margin-top:1px}
+input[type=text], textarea{
+  width:100%;background:transparent;border-radius:0;color:var(--pen);
+  font-family:"Charmonman","Sarabun",cursive;font-weight:700;
+  font-size:var(--fs-hand);outline:none;
+}
+input[type=text]{
+  border:0;border-bottom:1.5px dotted var(--rule);
+  padding:5px 2px 7px;line-height:1.6;
+}
+input[type=text]:focus{border-bottom-color:var(--pen)}
+textarea{
+  border:1px dotted var(--rule);padding:7px 9px;
+  line-height:29px;min-height:94px;resize:vertical;display:block;
+  background-image:repeating-linear-gradient(transparent 0 28px, rgba(216,193,186,.45) 28px 29px);
+  background-attachment:local;background-position:0 8px;
+}
+textarea:focus{border-color:var(--pen);border-style:solid}
+::placeholder{font-family:"Sarabun",sans-serif;font-size:clamp(12.5px,3.5vw,13.5px);font-weight:400;color:#C9B7B1}
+
+/* ---------- แถบความคืบหน้า / ปุ่ม ---------- */
+.progress{margin-top:clamp(20px,5vw,26px);display:flex;align-items:center;gap:9px}
+.bar{flex:1 1 auto;min-width:0;height:5px;background:rgba(216,193,186,.5);position:relative}
+.bar span{position:absolute;inset:0 auto 0 0;background:var(--pen);transition:width .35s cubic-bezier(.4,0,.2,1)}
+.pct{font-size:clamp(10.5px,3vw,11.5px);color:var(--ink-soft);white-space:nowrap}
+.navrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.btn{
+  font-family:inherit;font-size:var(--fs-btn);font-weight:600;cursor:pointer;
+  padding:clamp(11px,3.2vw,13px) clamp(18px,5.4vw,24px);
+  border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);
+  transition:transform .12s, box-shadow .12s;
+}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--ink)}
+.btn:active{transform:translate(1px,1px);box-shadow:none}
+.btn:focus-visible{outline:2px solid var(--pen);outline-offset:3px}
+.btn-main{background:var(--stamp);border-color:var(--stamp);color:#fff;flex:1 1 auto}
+.btn-ghost{border-style:dashed;color:var(--ink-soft)}
+.btn-sm{font-size:clamp(12px,3.4vw,13px);padding:8px 14px}
+.saved{font-size:clamp(10.5px,3vw,11.5px);color:var(--ink-soft);margin-top:9px;min-height:18px;font-style:italic}
+
+/* ---------- หน้าสรุป ---------- */
+.stampwrap{text-align:center;padding:10px 0 4px}
+.stamp{
+  display:inline-block;color:var(--stamp);border:3.5px solid var(--stamp);
+  padding:8px clamp(14px,5vw,20px) 10px;font-size:clamp(22px,6.6vw,28px);font-weight:700;letter-spacing:.1em;
+  transform:rotate(-8deg);mix-blend-mode:multiply;opacity:.88;line-height:1.3;
+  box-shadow:0 0 0 3px var(--paper), 0 0 0 5px var(--stamp);
+  animation:slam .5s cubic-bezier(.2,1.5,.4,1) both;
+}
+.stamp small{display:block;font-size:clamp(9px,2.6vw,11px);letter-spacing:.22em;font-weight:400;margin-top:1px}
+@keyframes slam{
+  0%{transform:rotate(-22deg) scale(3.2);opacity:0;filter:blur(3px)}
+  70%{opacity:.95}
+  100%{transform:rotate(-8deg) scale(1);opacity:.88;filter:blur(0)}
+}
+.sumsec{margin-top:22px}
+.sumsec h3{font-size:clamp(12.5px,3.6vw,14px);letter-spacing:.06em;color:var(--ink);font-weight:700;border-bottom:1.5px solid var(--ink);padding-bottom:5px;margin-bottom:6px}
+.rec{padding:7px 0;border-bottom:1px dotted var(--rule)}
+.rec .rq{font-size:clamp(12px,3.5vw,13px);color:var(--ink-soft);line-height:1.5}
+.rec .ra{font-family:"Charmonman",cursive;font-weight:700;color:var(--pen);font-size:var(--fs-hand);line-height:1.5;white-space:pre-wrap}
+.rec .blank{font-family:"Sarabun",sans-serif;font-weight:400;color:#C4B2AC;font-size:clamp(12px,3.4vw,13px)}
+.signrow{display:flex;flex-wrap:wrap;gap:14px clamp(10px,3vw,16px);margin-top:24px;font-size:clamp(11px,3.2vw,12px);color:var(--ink-soft)}
+.signrow > div{flex:1 1 130px;min-width:0;text-align:center}
+.signline{border-bottom:1.5px dotted var(--rule);padding-bottom:4px;margin-bottom:5px;font-family:"Charmonman",cursive;color:var(--pen);font-size:clamp(15px,4.6vw,20px);font-weight:700;min-height:30px;line-height:1.5}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.actions .btn{flex:1 1 auto}
+.foot{margin-top:24px;text-align:center;font-size:clamp(10.5px,3vw,11.5px);color:#B9A7A1;line-height:1.6}
+.homelink{color:var(--ink-soft);text-decoration:none;border-bottom:1px dotted var(--rule)}
+.homelink:hover{color:var(--pen);border-bottom-color:var(--pen)}
+.hide{display:none}
+
+@media (max-width:360px){
+  .masthead .corner{font-size:9px;letter-spacing:.04em}
+  .tape{display:none}
+  .toc{columns:1}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+/* ---------- สั่งพิมพ์ / บันทึกเป็น PDF ---------- */
+@media print{
+  body{background:#fff;padding:0;display:block}
+  .sheet{max-width:none;box-shadow:none;background:#fff;padding:0 12mm}
+  .sheet::before,.sheet::after,.tape,.actions,.navrow,.progress,.saved{display:none!important}
+  .stamp{animation:none}
+  .rec, .sumsec{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="tape"></div>
+
+  <div class="masthead">
+    <div class="corner"><span>ฟอร์ม รก.๐๒</span><span>แฟ้มประวัติ</span></div>
+    <h1>แบบบันทึกประวัติส่วนตัว</h1>
+    <div class="sub">เอกสารประกอบการรู้จักกันอย่างเป็นทางการ</div>
+  </div>
+
+  <div class="meta">
+    <span>ผู้ขอข้อมูล: <b id="metaFrom"></b></span>
+    <span>สถานะแฟ้ม: <b id="metaStatus">ยังไม่เริ่มกรอก</b></span>
+  </div>
+
+  <div class="stage" id="stage"></div>
+
+  <div class="foot">ข้อมูลทั้งหมดเก็บอยู่ในเครื่องของผู้กรอกเท่านั้น ไม่มีการส่งออกไปที่ใด<br>
+    <a class="homelink" href="index.html">← กลับสารบัญแฟ้ม</a></div>
+</div>
+
+<script>
+/* ================================================================
+   แก้ได้ตรงนี้
+   ================================================================ */
+const CONFIG = {
+  ผู้ขอข้อมูล: "ตอเฮต (宝宝)",
+  ผู้กรอก: "ฟรอยด์ (宝贝)",      // เว้นว่าง "" = ให้เขาพิมพ์ชื่อเอง
+  ข้อความปิดท้าย: "แฟ้มประวัติสมบูรณ์แล้ว ต่อจากนี้จะอ้างว่าไม่รู้ไม่ได้อีกต่อไป",
+};
+
+/* รูปแบบ: [ คำถาม, ชนิดช่อง('t'=บรรทัดเดียว / 'a'=ช่องยาว), คำใบ้ ] */
+const SECTIONS = [
+{ t:"ข้อมูลพื้นฐาน", d:"เรื่องที่ควรรู้ก่อนเป็นอันดับแรก", f:[
+  ["ชื่อจริง – นามสกุล","t","ชื่อเต็มตามบัตรเลย"],
+  ["ชื่อเล่น และชื่อที่อยากให้เรียกมากที่สุด","t","เรียกแบบไหนแล้วใจฟู"],
+  ["ชื่อที่ห้ามเรียกเด็ดขาด","t","มีไหม เผื่อพลาด"],
+  ["วัน / เดือน / ปีเกิด","t","เช่น ๑๒ มีนาคม ๒๕๔๕"],
+  ["อายุปัจจุบัน","t",""],
+  ["ราศี และปีนักษัตร","t",""],
+  ["กรุ๊ปเลือด","t",""],
+  ["ส่วนสูง / น้ำหนัก","t","ไม่อยากตอบก็ข้ามได้"],
+  ["ตอนนี้อยู่จังหวัด / ย่านไหน","t",""],
+  ["บ้านเกิด","t",""],
+  ["ภาษาที่พูดหรืออ่านได้","t","ไทย / อังกฤษ / จีน / อื่น ๆ"],
+  ["โซเชียลที่ใช้บ่อยที่สุด และไอดี","t",""],
+]},
+{ t:"ครอบครัวและคนรอบตัว", d:"คนที่อยู่ในชีวิตประจำวัน", f:[
+  ["พี่น้องกี่คน ตัวเองเป็นคนที่เท่าไหร่","t",""],
+  ["ตอนนี้อาศัยอยู่กับใคร","t",""],
+  ["สัตว์เลี้ยง (ชื่อ / พันธุ์ / นิสัย)","a","ถ้ามีหลายตัวเล่ามาให้หมด"],
+  ["เพื่อนสนิทที่ควรรู้จักไว้","a","ชื่อ + สนิทกันยังไง"],
+  ["คนในครอบครัวที่สนิทที่สุด และเพราะอะไร","a",""],
+  ["เรื่องที่ครอบครัวเข้มงวดเป็นพิเศษ","a",""],
+  ["ถ้าจะไปเจอครอบครัวคุณ ควรเตรียมตัวยังไง","a","ของฝาก คำพูด ข้อห้าม"],
+]},
+{ t:"ชีวิตประจำวัน", d:"เวลาไหนว่าง เวลาไหนห้ามกวน", f:[
+  ["ปกติตื่นกี่โมง และนอนกี่โมง","t",""],
+  ["ช่วงเวลาที่ว่างคุยได้มากที่สุด","t",""],
+  ["ช่วงเวลาที่ห้ามกวนเด็ดขาด","t","ประชุม เรียน ทำงาน นอน"],
+  ["วันหยุดประจำ","t",""],
+  ["เรียนหรือทำงานที่ไหน คณะ / ตำแหน่งอะไร","t",""],
+  ["เดินทางด้วยอะไร ใช้เวลาเท่าไหร่","t",""],
+  ["กิจวัตรที่ทำทุกวันไม่เคยขาด","a",""],
+  ["เวลาว่างมักทำอะไร","a",""],
+  ["เป็นคนตื่นเช้าหรือคนกลางคืน","t",""],
+  ["สิ่งแรกที่ทำหลังลืมตาตื่น","t",""],
+]},
+{ t:"อาหารและเครื่องดื่ม", d:"หมวดสำคัญ ใช้บ่อยที่สุดในชีวิตจริง", f:[
+  ["อาหารจานโปรดตลอดกาล","t",""],
+  ["ร้านประจำที่ไปบ่อยที่สุด","t",""],
+  ["อาหารที่ไม่กินเด็ดขาด","a",""],
+  ["แพ้อาหารหรือแพ้ยาอะไรบ้าง","a","ข้อนี้สำคัญมาก ตอบให้ครบ"],
+  ["กินเผ็ดได้ระดับไหน","t","เผ็ดน้อย / กลาง / เผ็ดมาก"],
+  ["ขนมหรือของหวานที่ชอบ","t",""],
+  ["เครื่องดื่มประจำ และระดับความหวาน","t","เช่น ชานมไข่มุก หวาน ๕๐%"],
+  ["ชา กาแฟ หรือชานม","t",""],
+  ["ผลไม้ที่ชอบ / ที่ไม่ชอบ","t",""],
+  ["มื้อที่มักข้ามบ่อยที่สุด","t",""],
+  ["เมนูที่อยากให้ทำให้กินสักครั้ง","a",""],
+  ["ร้านที่อยากไปด้วยกันแต่ยังไม่ได้ไป","a",""],
+]},
+{ t:"สิ่งที่ชอบ", d:"ยิ่งละเอียดยิ่งดี จะได้เดาถูกทุกครั้ง", f:[
+  ["สีที่ชอบที่สุด","t",""],
+  ["กลิ่นหรือน้ำหอมที่ชอบ","t",""],
+  ["เพลงที่ฟังวนซ้ำอยู่ตอนนี้","t",""],
+  ["ศิลปินหรือวงที่ชอบ","t",""],
+  ["แนวหนัง / ซีรีส์ และเรื่องโปรด","a",""],
+  ["เกมที่เล่นอยู่ตอนนี้","t",""],
+  ["หนังสือ การ์ตูน หรือนิยายที่ชอบ","a",""],
+  ["สัตว์ที่ชอบ","t",""],
+  ["ฤดูหรือสภาพอากาศที่ชอบ","t",""],
+  ["ดอกไม้ที่ชอบ","t",""],
+  ["สถานที่ที่ไปแล้วสบายใจที่สุด","a",""],
+  ["ของสะสม","t",""],
+  ["สไตล์การแต่งตัวที่ชอบ","t",""],
+  ["แอปที่เปิดบ่อยที่สุด ๓ อันดับ","t",""],
+  ["ประเภทของขวัญที่ได้แล้วยิ้มแน่นอน","a",""],
+]},
+{ t:"สิ่งที่ไม่ชอบ", d:"รู้ไว้เพื่อจะได้ไม่ทำ", f:[
+  ["สิ่งที่รับไม่ได้ที่สุด","a",""],
+  ["พฤติกรรมของคนอื่นที่ทำให้หงุดหงิด","a",""],
+  ["คำพูดที่ไม่อยากได้ยินเลย","a",""],
+  ["กลัวอะไรมากที่สุด","t",""],
+  ["อาหาร กลิ่น หรือเสียงที่ทนไม่ได้","a",""],
+  ["เรื่องที่ไม่อยากให้เอามาล้อ","a",""],
+  ["สิ่งที่ทำแล้วถึงขั้นเลิกคุยกันได้เลย","a",""],
+  ["ของที่ไม่อยากได้เป็นของขวัญ","t",""],
+]},
+{ t:"ความสามารถพิเศษและสกิล", d:"อวดได้เต็มที่ ไม่ต้องถ่อมตัว", f:[
+  ["ความสามารถพิเศษที่ภูมิใจที่สุด","a",""],
+  ["สกิลที่คิดว่าทำได้ดีกว่าคนทั่วไป","a",""],
+  ["เครื่องดนตรีที่เล่นได้","t",""],
+  ["กีฬาที่เล่นได้ หรือชอบดู","t",""],
+  ["ภาษาที่ใช้ได้ และระดับความคล่อง","a",""],
+  ["โปรแกรมคอมพิวเตอร์ที่ใช้เป็น","a","เช่น Photoshop, Excel, Figma, ภาษาโปรแกรม"],
+  ["งานฝีมือหรืองานศิลปะที่ทำได้","a",""],
+  ["ทำอาหารได้ไหม เมนูที่ถนัดคืออะไร","a",""],
+  ["สกิลลับที่ยังไม่เคยบอกใคร","a","เอาแบบที่ไม่มีใครรู้เลย"],
+  ["สิ่งที่อยากเรียนรู้เพิ่มมากที่สุดตอนนี้","a",""],
+  ["สิ่งที่พยายามแค่ไหนก็ทำไม่ได้จริง ๆ","a",""],
+  ["ถ้าต้องสอนอะไรสักอย่างให้คนอื่น จะสอนเรื่องอะไร","a",""],
+]},
+{ t:"การเรียน การงาน และเป้าหมาย", d:"ทิศทางชีวิตที่กำลังจะไป", f:[
+  ["ตอนนี้กำลังเรียนหรือทำงานอะไรอยู่","a",""],
+  ["วิชาหรืองานที่ถนัดที่สุด","t",""],
+  ["วิชาหรืองานที่เกลียดที่สุด","t",""],
+  ["ความฝันตอนเด็ก อยากเป็นอะไร","t",""],
+  ["เป้าหมายภายใน ๑ ปีนี้","a",""],
+  ["เป้าหมายในอีก ๕ ปีข้างหน้า","a",""],
+  ["อยากมีชีวิตแบบไหนตอนอายุ ๓๐","a",""],
+  ["มุมมองเรื่องเงิน เป็นสายเก็บหรือสายใช้","a",""],
+  ["สิ่งที่ภูมิใจที่สุดที่เคยทำสำเร็จ","a",""],
+]},
+{ t:"นิสัยและการอยู่ด้วยกัน", d:"หมวดที่ตอบตรง ๆ แล้วจะไม่ต้องทะเลาะกันทีหลัง", f:[
+  ["เวลาอยู่กับคนสนิท เป็นคนแบบไหน","a",""],
+  ["เวลาโกรธจะแสดงออกยังไง","a",""],
+  ["เวลาเงียบไป ปกติแปลว่าอะไร","a",""],
+  ["เวลาเสียใจ อยากให้ทำอะไรให้มากที่สุด","a",""],
+  ["อยากให้ปลอบแบบไหน","a","กอด / ฟังเฉย ๆ / ช่วยหาทางแก้ / ขออยู่คนเดียวก่อน"],
+  ["ทะเลาะกันแล้วอยากเคลียร์ทันที หรือขอเวลาก่อน","a",""],
+  ["ภาษารักที่ตรงกับตัวเองที่สุด","a","คำพูด / เวลาคุณภาพ / ของขวัญ / การช่วยเหลือ / การสัมผัส"],
+  ["ความถี่ในการคุยที่รู้สึกสบายใจ","a","ตลอดเวลา หรือ เว้นช่วงบ้าง"],
+  ["เรื่องที่ต้องบอกกันเสมอ ห้ามปิด","a",""],
+  ["เวลาต้องการอยู่คนเดียว อยากให้ทำยังไง","a",""],
+  ["นิสัยเสียของตัวเองที่ยอมรับตามตรง","a",""],
+  ["สิ่งที่อยากให้เข้าใจ แต่ไม่เคยพูดออกมา","a","ข้อนี้ตอบยาวได้เลย"],
+]},
+{ t:"ของขวัญและวันสำคัญ", d:"ไว้ใช้ตอนเซอร์ไพรส์ ห้ามพลาด", f:[
+  ["ของขวัญที่อยากได้ที่สุดตอนนี้","a",""],
+  ["ไซส์เสื้อ","t","S / M / L / อก-รอบเอว"],
+  ["ไซส์กางเกง และไซส์รองเท้า","t",""],
+  ["ไซส์แหวน หรือรอบข้อมือ","t",""],
+  ["แบรนด์หรือร้านที่ชอบ","a",""],
+  ["วันสำคัญที่ต้องจำให้ได้","a","วันเกิดตัวเอง วันเกิดพ่อแม่ วันครบรอบ"],
+  ["อยากฉลองวันเกิดแบบไหน","a",""],
+  ["เค้กและดอกไม้ที่ชอบ","t",""],
+  ["เซอร์ไพรส์แบบไหนที่ไม่ชอบ","a",""],
+]},
+{ t:"สุขภาพและข้อควรระวัง", d:"ตอบเท่าที่สบายใจ แต่ถ้าตอบได้จะดูแลได้ถูก", f:[
+  ["เรื่องสุขภาพที่ควรรู้ไว้","a",""],
+  ["ยาที่ต้องกินประจำ หรือยาที่ห้ามใช้","a",""],
+  ["เวลาไม่สบายมักเป็นอะไรบ่อยที่สุด","a",""],
+  ["เวลาป่วยอยากให้ทำอะไรให้","a",""],
+  ["เบอร์ติดต่อฉุกเฉิน และความสัมพันธ์","t",""],
+  ["โรงพยาบาลที่ใช้ประจำ","t",""],
+  ["เรื่องที่ต้องระวังเป็นพิเศษ","a",""],
+]},
+{ t:"คำถามปลายเปิด", d:"หมวดสุดท้าย ตอบตามใจเลย", f:[
+  ["ถ้ามีพลังวิเศษได้ ๑ อย่าง จะเลือกอะไร","a",""],
+  ["ติดเกาะร้าง เลือกของไปได้ ๓ อย่าง","a",""],
+  ["ที่ที่อยากไปเที่ยวด้วยกันมากที่สุด","a",""],
+  ["ถ้าย้อนเวลาได้ อยากกลับไปวันไหน","a",""],
+  ["ความลับเล็ก ๆ ที่พอจะเล่าให้ฟังได้","a",""],
+  ["สิ่งที่อยากทำร่วมกันให้ได้ภายในปีนี้","a",""],
+  ["ให้คะแนนความสุขตอนนี้ ๑–๑๐ และเพราะอะไร","a",""],
+  ["อยากบอกอะไรกับคนที่ส่งแบบฟอร์มนี้มา","a","พูดยาว ๆ ได้เลย ไม่มีใครอ่านนอกจากเขา"],
+]},
+];
+
+/* ================================================================ */
+
+const stage = document.getElementById('stage');
+const metaFrom = document.getElementById('metaFrom');
+const metaStatus = document.getElementById('metaStatus');
+const THAI = ['๐','๑','๒','๓','๔','๕','๖','๗','๘','๙'];
+const toThai = n => String(n).split('').map(d => THAI[+d]).join('');
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const KEY = 'rk02-draft-v1';
+const TOTAL = SECTIONS.reduce((n, s) => n + s.f.length, 0);
+
+metaFrom.textContent = CONFIG.ผู้ขอข้อมูล;
+
+let name = CONFIG.ผู้กรอก || '';
+let answers = {};
+let sec = 0;
+
+/* ---- บันทึกร่างอัตโนมัติ (ถ้าเบราว์เซอร์ไม่ให้ ก็ยังใช้งานได้ปกติ) ---- */
+function saveDraft(done){
+  try{
+    localStorage.setItem(KEY, JSON.stringify({ name, answers, sec }));
+    localStorage.setItem('rk02-progress', JSON.stringify({
+      filled: filledCount(), total: TOTAL, done: !!done
+    }));
+  }catch(e){}
+}
+function loadDraft(){
+  try{
+    const d = JSON.parse(localStorage.getItem(KEY) || 'null');
+    if (d && d.answers) return d;
+  }catch(e){}
+  return null;
+}
+function clearDraft(){ try{ localStorage.removeItem(KEY); }catch(e){} }
+
+function filledCount(){ return Object.values(answers).filter(v => String(v).trim()).length; }
+function updateStatus(){
+  const n = filledCount();
+  metaStatus.textContent = n === 0 ? 'ยังไม่เริ่มกรอก'
+    : n >= TOTAL ? 'ครบทุกข้อแล้ว' : `กรอกแล้ว ${toThai(n)}/${toThai(TOTAL)} ข้อ`;
+}
+function scrollTop(){ window.scrollTo({ top: 0, behavior: 'smooth' }); }
+
+/* ---------- หน้าแรก ---------- */
+function screenIntro(){
+  const draft = loadDraft();
+  const resume = draft && Object.values(draft.answers || {}).some(v => String(v).trim());
+  stage.innerHTML = `
+    <p class="lede">เรียน <span class="pen" id="hi">${esc(name) || 'ผู้กรอกแบบฟอร์ม'}</span><br>
+      <span class="pen">${esc(CONFIG.ผู้ขอข้อมูล)}</span> ขอความร่วมมือกรอกแฟ้มประวัติฉบับนี้
+      รวม <strong>${toThai(SECTIONS.length)} หมวด ${toThai(TOTAL)} ข้อ</strong>
+      เพื่อใช้อ้างอิงตลอดไป ข้อไหนไม่อยากตอบข้ามได้ ไม่มีข้อบังคับ</p>
+
+    <ol class="toc">${SECTIONS.map((s,i) =>
+      `<li><b>หมวด ${toThai(i+1)}</b> ${s.t}</li>`).join('')}</ol>
+
+    <div class="field" style="margin-top:20px">
+      <label>ชื่อผู้กรอก</label>
+      <input type="text" id="nameInput" placeholder="พิมพ์ชื่อของคุณ" value="${esc(name)}" autocomplete="off" spellcheck="false">
+    </div>
+
+    <div class="notice">
+      <b>ระบบบันทึกร่างอัตโนมัติ</b> — พิมพ์ไปเรื่อย ๆ ได้เลย ปิดหน้าไปแล้วกลับมาต่อได้
+      ข้อมูลเก็บไว้ในเครื่องของคุณเท่านั้น ไม่ถูกส่งไปที่ไหนทั้งสิ้น
+      กรอกเสร็จค่อยกดคัดลอกหรือดาวน์โหลดส่งกลับเอง
+    </div>
+
+    <div class="navrow">
+      <button class="btn btn-main" id="start">${resume ? 'กรอกต่อจากเดิม' : 'เริ่มกรอกแฟ้มประวัติ'}</button>
+      ${resume ? '<button class="btn btn-ghost btn-sm" id="fresh">เริ่มใหม่ทั้งหมด</button>' : ''}
+    </div>`;
+
+  const input = document.getElementById('nameInput');
+  const hi = document.getElementById('hi');
+  input.addEventListener('input', () => {
+    name = input.value.trim();
+    hi.textContent = name || 'ผู้กรอกแบบฟอร์ม';
+    saveDraft();
+  });
+  document.getElementById('start').addEventListener('click', () => {
+    if (resume){ answers = draft.answers; name = draft.name || name; sec = draft.sec || 0; }
+    updateStatus(); screenSection();
+  });
+  const fresh = document.getElementById('fresh');
+  if (fresh) fresh.addEventListener('click', () => {
+    if (confirm('ลบคำตอบที่กรอกไว้ทั้งหมดและเริ่มใหม่?')){
+      answers = {}; sec = 0; clearDraft();
+      try{ localStorage.removeItem('rk02-progress'); }catch(e){}
+      updateStatus(); screenIntro();
+    }
+  });
+}
+
+/* ---------- หน้ากรอกแต่ละหมวด ---------- */
+function screenSection(){
+  const s = SECTIONS[sec];
+  const done = SECTIONS.slice(0, sec).reduce((n, x) => n + x.f.length, 0);
+  const pct = Math.round(done / TOTAL * 100);
+
+  stage.innerHTML = `
+    <div class="sechead">
+      <div class="no">หมวด ${toThai(sec+1)} / ${toThai(SECTIONS.length)}</div>
+      <h2>${s.t}</h2>
+      <div class="desc">${s.d}</div>
+    </div>
+
+    ${s.f.map((f, i) => {
+      const id = `q${sec}_${i}`;
+      const val = esc(answers[id] || '');
+      const label = `<label for="${id}"><span class="fno">${toThai(sec+1)}.${toThai(i+1)}</span>${f[0]}
+        ${f[2] ? `<span class="hint">${f[2]}</span>` : ''}</label>`;
+      return `<div class="field">${label}` + (f[1] === 'a'
+        ? `<textarea id="${id}" data-id="${id}" rows="3" placeholder="พิมพ์คำตอบตรงนี้">${val}</textarea>`
+        : `<input type="text" id="${id}" data-id="${id}" placeholder="พิมพ์คำตอบตรงนี้" value="${val}" autocomplete="off">`)
+        + `</div>`;
+    }).join('')}
+
+    <div class="progress">
+      <span class="pct">${toThai(pct)}%</span>
+      <div class="bar"><span style="width:${pct}%"></span></div>
+    </div>
+    <div class="navrow">
+      ${sec > 0 ? '<button class="btn" id="prev">ย้อนกลับ</button>' : ''}
+      <button class="btn btn-main" id="next">${sec < SECTIONS.length - 1 ? 'หมวดถัดไป' : 'ปิดแฟ้ม แล้วดูสรุป'}</button>
+    </div>
+    <div class="saved" id="saved"></div>`;
+
+  const savedMsg = document.getElementById('saved');
+  let timer;
+  stage.querySelectorAll('[data-id]').forEach(el => {
+    el.addEventListener('input', () => {
+      answers[el.dataset.id] = el.value;
+      if (el.tagName === 'TEXTAREA'){
+        el.style.height = 'auto';
+        el.style.height = Math.max(94, el.scrollHeight + 4) + 'px';
+      }
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        saveDraft(); updateStatus();
+        savedMsg.textContent = 'บันทึกร่างอัตโนมัติแล้ว';
+        setTimeout(() => { savedMsg.textContent = ''; }, 1600);
+      }, 500);
+    });
+    if (el.tagName === 'TEXTAREA' && el.value){
+      el.style.height = 'auto';
+      el.style.height = Math.max(94, el.scrollHeight + 4) + 'px';
+    }
+  });
+
+  const prev = document.getElementById('prev');
+  if (prev) prev.addEventListener('click', () => { sec--; saveDraft(); screenSection(); scrollTop(); });
+  document.getElementById('next').addEventListener('click', () => {
+    saveDraft(); updateStatus();
+    if (sec < SECTIONS.length - 1){ sec++; screenSection(); scrollTop(); }
+    else { screenSummary(); scrollTop(); }
+  });
+}
+
+/* ---------- หน้าสรุป ---------- */
+function buildText(){
+  const today = new Date().toLocaleDateString('th-TH', { day:'numeric', month:'long', year:'numeric' });
+  const lines = [
+    'แฟ้มประวัติส่วนตัว (ฟอร์ม รก.๐๒)',
+    `ผู้กรอก: ${name || '—'}`,
+    `ผู้ขอข้อมูล: ${CONFIG.ผู้ขอข้อมูล}`,
+    `ลงวันที่ ${today}`,
+    `กรอกครบ ${filledCount()} จาก ${TOTAL} ข้อ`, ''];
+  SECTIONS.forEach((s, si) => {
+    lines.push(`━━ หมวด ${toThai(si+1)} · ${s.t} ━━`);
+    s.f.forEach((f, i) => {
+      const v = (answers[`q${si}_${i}`] || '').trim();
+      lines.push(`${toThai(si+1)}.${toThai(i+1)} ${f[0]}`);
+      lines.push(`    ${v || '(ไม่ได้ตอบ)'}`);
+    });
+    lines.push('');
+  });
+  return lines.join('\n');
+}
+
+function screenSummary(){
+  updateStatus();
+  const today = new Date().toLocaleDateString('th-TH', { day:'numeric', month:'long', year:'numeric' });
+  saveDraft(true);
+
+  stage.innerHTML = `
+    <div class="stampwrap"><div class="stamp">บันทึกแล้ว<small>FILED</small></div></div>
+    <p class="lede" style="text-align:center;margin-top:12px">${esc(CONFIG.ข้อความปิดท้าย)}</p>
+    <div class="meta" style="justify-content:center">กรอกครบ ${toThai(filledCount())} จาก ${toThai(TOTAL)} ข้อ</div>
+
+    ${SECTIONS.map((s, si) => `
+      <div class="sumsec">
+        <h3>หมวด ${toThai(si+1)} · ${s.t}</h3>
+        ${s.f.map((f, i) => {
+          const v = (answers[`q${si}_${i}`] || '').trim();
+          return `<div class="rec"><div class="rq">${toThai(si+1)}.${toThai(i+1)} ${f[0]}</div>
+            <div class="ra${v ? '' : ' blank'}">${v ? esc(v) : 'ไม่ได้ตอบ'}</div></div>`;
+        }).join('')}
+      </div>`).join('')}
+
+    <div class="signrow">
+      <div><div class="signline">${esc(name) || '—'}</div>ลงชื่อผู้กรอก</div>
+      <div><div class="signline">${esc(CONFIG.ผู้ขอข้อมูล)}</div>ลงชื่อผู้รับแฟ้ม</div>
+    </div>
+    <div class="meta" style="justify-content:center;margin-top:12px">ลงวันที่ ${today}</div>
+
+    <div class="actions">
+      <button class="btn btn-main" id="copy">คัดลอกทั้งหมด</button>
+      <button class="btn" id="dl">ดาวน์โหลดไฟล์</button>
+      <button class="btn" id="print">บันทึกเป็น PDF</button>
+    </div>
+    <div class="navrow"><button class="btn btn-ghost btn-sm" id="back">กลับไปแก้คำตอบ</button></div>`;
+
+  document.getElementById('copy').addEventListener('click', async e => {
+    const text = buildText();
+    try{ await navigator.clipboard.writeText(text); }
+    catch{
+      const ta = document.createElement('textarea');
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      document.execCommand('copy'); ta.remove();
+    }
+    e.target.textContent = 'คัดลอกแล้ว ✓';
+  });
+
+  document.getElementById('dl').addEventListener('click', () => {
+    const blob = new Blob(["\ufeff" + buildText()], { type:'text/plain;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = `ประวัติ-${(name || 'ผู้กรอก').replace(/[\\/:*?"<>|]/g, '')}.txt`;
+    document.body.appendChild(a); a.click();
+    setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+  });
+
+  document.getElementById('print').addEventListener('click', () => window.print());
+  document.getElementById('back').addEventListener('click', () => { sec = 0; screenSection(); scrollTop(); });
+}
+
+updateStatus();
+screenIntro();
+</script>
+</body>
+</html>
