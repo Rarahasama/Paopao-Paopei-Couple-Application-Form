@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>คำร้องขอเป็นแฟน — แบบฟอร์ม รก.๐๑</title>
-<meta name="description" content="มีคำร้องหนึ่งฉบับรอคุณพิจารณาอยู่ กรุณากรอกให้ครบทุกข้อ">
+<title>สารบัญแฟ้มเอกสาร — ฝ่ายทะเบียนความสัมพันธ์</title>
+<meta name="description" content="เลือกแบบฟอร์มที่ต้องการดำเนินการ">
 <meta name="theme-color" content="#E3CFC9">
 
-<!-- ▼▼ แก้ USERNAME กับ REPO ให้ตรงกับของตัวเอง เพื่อให้ตอนส่งลิงก์ในไลน์มีรูปพรีวิวขึ้น ▼▼ -->
+<!-- ▼▼ แก้ USERNAME กับ REPO ให้ตรงกับของตัวเอง ▼▼ -->
 <meta property="og:url" content="https://USERNAME.github.io/REPO/">
-<meta property="og:image" content="https://USERNAME.github.io/REPO/og.png">
-<!-- ▲▲ ถ้ายังไม่แก้ ลิงก์จะยังส่งได้ปกติ แค่ไม่มีรูปพรีวิว ▲▲ -->
+<meta property="og:image" content="https://USERNAME.github.io/REPO/og-home.png">
+<!-- ▲▲ -->
 <meta property="og:type" content="website">
-<meta property="og:title" content="คำร้องขอเป็นแฟน (แบบฟอร์ม รก.๐๑)">
-<meta property="og:description" content="มีคำร้องหนึ่งฉบับรอคุณพิจารณาอยู่ กรุณากรอกให้ครบทุกข้อ">
+<meta property="og:title" content="สารบัญแฟ้มเอกสาร (ฝ่ายทะเบียนความสัมพันธ์)">
+<meta property="og:description" content="มีเอกสารรอคุณดำเนินการอยู่ กรุณาเลือกแบบฟอร์ม">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23FDF4F0'/><rect x='14' y='14' width='72' height='72' fill='none' stroke='%23C21F35' stroke-width='9'/><path d='M50 72 L30 52 a12 12 0 1 1 20-14 a12 12 0 1 1 20 14 Z' fill='%23C21F35'/></svg>">
@@ -30,18 +30,14 @@
   --pen:#1F4FA3;
   --stamp:#C21F35;
 
-  /* ระยะขอบและขนาดตัวอักษรยืดหดตามความกว้างจอ */
-  --gutter:clamp(8px, 3.2vw, 16px);      /* ขอบนอกกระดาษ */
-  --pad-x:clamp(15px, 5vw, 24px);        /* ขอบในกระดาษ ซ้าย-ขวา */
-  --pad-y:clamp(20px, 5.5vw, 28px);      /* ขอบในกระดาษ บน-ล่าง */
+  --gutter:clamp(8px, 3.2vw, 16px);
+  --pad-x:clamp(15px, 5vw, 24px);
+  --pad-y:clamp(20px, 5.5vw, 28px);
 
-  --fs-title:clamp(20px, 6.6vw, 26px);
+  --fs-title:clamp(20px, 6.4vw, 26px);
   --fs-sub:clamp(11px, 3.2vw, 12.5px);
   --fs-body:clamp(14.5px, 4.1vw, 16px);
-  --fs-q:clamp(16px, 4.9vw, 18.5px);
-  --fs-hand:clamp(16.5px, 5vw, 19px);
   --fs-mono:clamp(10.5px, 3vw, 12px);
-  --fs-btn:clamp(15.5px, 4.4vw, 17px);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
@@ -62,20 +58,16 @@ body{
   line-height:1.62;
   -webkit-font-smoothing:antialiased;
 }
-/* ข้อความไทยยาว ๆ ไม่ให้ทะลุขอบกระดาษ */
-body, .q, .opt, .lede, .rec, .signline, .foot{overflow-wrap:break-word;word-break:break-word}
-button{touch-action:manipulation;-webkit-tap-highlight-color:transparent;max-width:100%}
+body, .lede, .card{overflow-wrap:break-word;word-break:break-word}
 
 .sheet{
-  width:100%;max-width:560px;
-  position:relative;
+  width:100%;max-width:580px;position:relative;
   background:var(--paper);
   background-image:repeating-linear-gradient(to bottom, rgba(216,193,186,.16) 0 1px, transparent 1px 36px);
   box-shadow:0 1px 0 rgba(255,255,255,.7) inset, 0 18px 40px -18px rgba(60,30,30,.45);
   padding:var(--pad-y) var(--pad-x);
   overflow:hidden;
 }
-/* ขอบกระดาษฉีกแบบสำเนาคาร์บอน */
 .sheet::before,.sheet::after{
   content:"";position:absolute;left:0;right:0;height:9px;pointer-events:none;
   background:radial-gradient(circle at 5px -2px, transparent 5px, var(--paper) 5.5px) 0 0/12px 9px repeat-x;
@@ -89,14 +81,8 @@ button{touch-action:manipulation;-webkit-tap-highlight-color:transparent;max-wid
   font-family:"Space Mono",monospace;font-size:clamp(9px,2.7vw,10.5px);letter-spacing:.08em;
   color:var(--ink-soft);text-transform:uppercase;line-height:1.4;
 }
-.masthead h1{
-  font-size:var(--fs-title);font-weight:700;
-  text-align:center;margin:clamp(6px,2vw,9px) 0 2px;line-height:1.25;
-}
-.masthead .sub{
-  text-align:center;font-size:var(--fs-sub);color:var(--ink-soft);
-  letter-spacing:clamp(.04em,1vw,.14em);line-height:1.5;
-}
+.masthead h1{font-size:var(--fs-title);font-weight:700;text-align:center;margin:clamp(6px,2vw,9px) 0 2px;line-height:1.25}
+.masthead .sub{text-align:center;font-size:var(--fs-sub);color:var(--ink-soft);letter-spacing:clamp(.04em,1vw,.12em);line-height:1.5}
 .tape{
   position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-1.5deg);
   background:rgba(255,241,205,.85);border-left:1px dashed rgba(0,0,0,.12);border-right:1px dashed rgba(0,0,0,.12);
@@ -108,128 +94,56 @@ button{touch-action:manipulation;-webkit-tap-highlight-color:transparent;max-wid
   font-family:"Space Mono",monospace;letter-spacing:.03em;line-height:1.6;
 }
 .meta b{font-family:"Sarabun",sans-serif;font-weight:600}
-.stage{margin-top:clamp(14px,4vw,18px);min-height:clamp(300px,58vw,330px)}
 .pen{font-family:"Charmonman","Sarabun",cursive;color:var(--pen);font-weight:700;line-height:1.5}
 
-/* ---------- หน้าแรก ---------- */
-.lede{font-size:var(--fs-body);margin-bottom:14px}
-.lede strong{font-weight:600}
-.fieldline{margin:clamp(16px,5vw,22px) 0 8px}
-.fieldline label{display:block;font-size:clamp(12px,3.4vw,13px);color:var(--ink-soft);letter-spacing:.05em;margin-bottom:2px}
-input[type=text]{
-  width:100%;border:0;border-bottom:1.5px dotted var(--rule);background:transparent;border-radius:0;
-  font-family:"Charmonman","Sarabun",cursive;font-size:clamp(20px,6vw,24px);font-weight:700;color:var(--pen);
-  padding:6px 2px 8px;outline:none;line-height:1.5;
+.lede{font-size:var(--fs-body);margin-top:clamp(16px,4.5vw,20px)}
+.listhead{
+  display:flex;align-items:center;gap:10px;margin-top:clamp(18px,5vw,24px);
+  font-size:clamp(11px,3.2vw,12px);letter-spacing:.16em;color:var(--stamp);font-weight:700;
 }
-input[type=text]:focus{border-bottom-color:var(--pen)}
-input[type=text]::placeholder{font-family:"Sarabun",sans-serif;font-size:clamp(14px,4vw,15px);font-weight:400;color:#C4B2AC}
-.notice{
-  border:1px dashed var(--rule);padding:10px 12px;font-size:clamp(11.5px,3.3vw,12.5px);
-  color:var(--ink-soft);margin-top:18px;line-height:1.6;
-}
+.listhead::after{content:"";flex:1;height:1.5px;background:var(--ink)}
 
-/* ---------- คำถาม ---------- */
-.itemhead{display:flex;align-items:baseline;gap:9px;margin-bottom:3px}
-.itemno{font-size:clamp(11px,3.2vw,12px);letter-spacing:.16em;color:var(--stamp);font-weight:700;white-space:nowrap}
-.q{font-size:var(--fs-q);font-weight:600;line-height:1.5;margin-bottom:14px}
-.opts{list-style:none;display:flex;flex-direction:column;gap:2px}
-.opt{
-  display:flex;gap:clamp(8px,2.8vw,11px);align-items:flex-start;width:100%;text-align:left;
-  background:transparent;border:0;border-bottom:1px dotted var(--rule);
-  font-family:inherit;font-size:var(--fs-body);color:var(--ink);
-  padding:clamp(10px,3vw,12px) 2px;cursor:pointer;transition:background .15s;
-  line-height:1.5;
+/* ---------- การ์ดแต่ละฟอร์ม ---------- */
+.card{
+  display:block;text-decoration:none;color:inherit;
+  border:1.5px solid var(--ink);background:rgba(255,255,255,.35);
+  padding:clamp(13px,3.8vw,17px);margin-top:clamp(11px,3vw,14px);
+  transition:transform .13s, box-shadow .13s, background .13s;
 }
-.opt .txt{flex:1 1 auto;min-width:0}
-.opt:hover{background:rgba(31,79,163,.05)}
-.opt:focus-visible{outline:2px solid var(--pen);outline-offset:-2px}
-.box{
-  flex:0 0 auto;width:17px;height:17px;border:1.5px solid var(--ink);
-  margin-top:4px;position:relative;
+.card:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink);background:rgba(255,255,255,.7)}
+.card:active{transform:translate(0,0);box-shadow:none}
+.card:focus-visible{outline:2px solid var(--pen);outline-offset:3px}
+.card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.card .code{font-family:"Space Mono",monospace;font-size:clamp(10px,2.9vw,11.5px);letter-spacing:.12em;color:var(--stamp);font-weight:700;white-space:nowrap}
+.card h2{font-size:clamp(17px,5vw,20px);font-weight:700;line-height:1.3;margin-top:3px}
+.card .desc{font-size:clamp(13px,3.7vw,14px);color:var(--ink-soft);line-height:1.55;margin-top:5px}
+.card .foot2{
+  display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:9px;padding-top:8px;
+  border-top:1px dotted var(--rule);
+  font-size:clamp(11px,3.2vw,12px);color:var(--ink-soft);
 }
-.opt.picked .box::after{
-  content:"✓";position:absolute;inset:-9px -2px 0 0;
-  font-family:"Charmonman",cursive;font-size:27px;font-weight:700;color:var(--pen);
-  line-height:1;
+.card .go{color:var(--pen);font-weight:600;margin-left:auto;white-space:nowrap}
+.badge{
+  font-size:clamp(9.5px,2.8vw,10.5px);letter-spacing:.06em;font-weight:700;
+  border:1.5px solid currentColor;padding:2px 8px;white-space:nowrap;line-height:1.6;
+  color:var(--ink-soft);
 }
-.opt.picked .txt{color:var(--pen);font-family:"Charmonman",cursive;font-weight:700;font-size:var(--fs-hand);line-height:1.45}
-.progress{margin-top:clamp(18px,5vw,26px);display:flex;align-items:center;gap:9px}
-.bar{flex:1 1 auto;min-width:0;height:5px;background:rgba(216,193,186,.5);position:relative}
-.bar span{position:absolute;inset:0 auto 0 0;background:var(--pen);transition:width .35s cubic-bezier(.4,0,.2,1)}
-.pct{font-family:"Sarabun",sans-serif;font-size:clamp(10.5px,3vw,11.5px);color:var(--ink-soft);letter-spacing:.04em;white-space:nowrap}
+.badge.on{color:var(--stamp)}
+.badge.mid{color:var(--pen)}
+.card.locked{opacity:.5;border-style:dashed;pointer-events:none;background:transparent}
 
-/* ---------- ข้อสุดท้าย ---------- */
-.finalzone{position:relative;min-height:clamp(150px,44vw,175px);margin-top:18px}
-.btnrow{display:flex;gap:clamp(10px,3vw,14px);align-items:center;flex-wrap:wrap}
-.btn{
-  font-family:inherit;font-size:var(--fs-btn);font-weight:600;cursor:pointer;
-  padding:clamp(11px,3.2vw,13px) clamp(20px,6vw,26px);
-  border:1.5px solid var(--ink);background:var(--paper);color:var(--ink);
-  transition:transform .12s, box-shadow .12s;
-}
-.btn:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--ink)}
-.btn:active{transform:translate(1px,1px);box-shadow:none}
-.btn:focus-visible{outline:2px solid var(--pen);outline-offset:3px}
-.btn-yes{
-  background:var(--stamp);border-color:var(--stamp);color:#fff;
-  padding:clamp(13px,3.8vw,15px) clamp(26px,8vw,34px);font-size:clamp(17px,5vw,19px);
-}
-.btn-yes:hover{box-shadow:3px 3px 0 var(--ink)}
-.btn-no{transition:all .22s cubic-bezier(.34,1.4,.64,1)}
-.sysmsg{
-  margin-top:14px;font-family:"Sarabun",sans-serif;font-size:clamp(11.5px,3.3vw,12.5px);
-  color:var(--stamp);min-height:20px;line-height:1.55;
-}
-.next{margin-top:20px}
+.notice{border:1px dashed var(--rule);padding:11px 13px;font-size:clamp(11.5px,3.3vw,12.5px);color:var(--ink-soft);margin-top:clamp(18px,5vw,24px);line-height:1.65}
+.notice b{color:var(--ink);font-weight:600}
+.foot{margin-top:24px;text-align:center;font-size:clamp(10.5px,3vw,11.5px);color:#B9A7A1;line-height:1.6}
+.reset{background:none;border:0;color:#B9A7A1;font:inherit;font-size:inherit;cursor:pointer;text-decoration:underline dotted;padding:0}
+.reset:hover{color:var(--stamp)}
 
-/* ---------- หน้าอนุมัติ ---------- */
-.stampwrap{position:relative;text-align:center;padding:14px 0 4px}
-.stamp{
-  display:inline-block;color:var(--stamp);border:3.5px solid var(--stamp);
-  padding:8px clamp(14px,5vw,20px) 10px;font-size:clamp(24px,7.5vw,30px);font-weight:700;letter-spacing:.1em;
-  transform:rotate(-9deg);mix-blend-mode:multiply;opacity:.88;
-  box-shadow:0 0 0 3px var(--paper), 0 0 0 5px var(--stamp);
-  animation:slam .5s cubic-bezier(.2,1.5,.4,1) both;line-height:1.3;
-}
-.stamp small{display:block;font-size:clamp(9px,2.6vw,11px);letter-spacing:.24em;font-weight:400;margin-top:1px}
-@keyframes slam{
-  0%{transform:rotate(-24deg) scale(3.4);opacity:0;filter:blur(3px)}
-  70%{opacity:.95}
-  100%{transform:rotate(-9deg) scale(1);opacity:.88;filter:blur(0)}
-}
-.summary{margin-top:20px;border-top:1.5px solid var(--ink);padding-top:14px}
-.summary h2{font-size:clamp(11.5px,3.4vw,13px);letter-spacing:.14em;color:var(--ink-soft);font-weight:600;margin-bottom:10px}
-.rec{padding:8px 0;border-bottom:1px dotted var(--rule)}
-.rec .rq{font-size:clamp(12.5px,3.6vw,13.5px);color:var(--ink-soft);line-height:1.5}
-.rec .ra{font-family:"Charmonman",cursive;font-weight:700;color:var(--pen);font-size:var(--fs-hand);line-height:1.45}
-.signrow{display:flex;flex-wrap:wrap;gap:14px clamp(10px,3vw,16px);margin-top:22px;font-size:clamp(11px,3.2vw,12px);color:var(--ink-soft)}
-.signrow > div{flex:1 1 130px;min-width:0;text-align:center}
-.signline{
-  border-bottom:1.5px dotted var(--rule);padding-bottom:4px;margin-bottom:5px;
-  font-family:"Charmonman",cursive;color:var(--pen);font-size:clamp(15px,4.6vw,20px);
-  font-weight:700;min-height:30px;line-height:1.5;
-}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
-.actions .btn{flex:1 1 auto}
-.foot{
-  margin-top:24px;text-align:center;font-family:"Sarabun",sans-serif;
-  font-size:clamp(10.5px,3vw,11.5px);letter-spacing:.02em;color:#B9A7A1;line-height:1.6;
-}
-.hide{display:none}
-
-/* จอเล็กมาก เช่น iPhone SE — ลดของประดับที่กินที่ */
 @media (max-width:360px){
   .masthead .corner{font-size:9px;letter-spacing:.04em}
   .tape{display:none}
-  .btnrow{gap:10px}
-}
-/* จอกว้างแต่เตี้ย เช่น มือถือแนวนอน */
-@media (max-height:520px) and (orientation:landscape){
-  .stage{min-height:auto}
-  .finalzone{min-height:130px}
 }
 @media (prefers-reduced-motion:reduce){
-  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  *{transition-duration:.01ms!important}
 }
 </style>
 </head>
@@ -238,210 +152,125 @@ input[type=text]::placeholder{font-family:"Sarabun",sans-serif;font-size:clamp(1
   <div class="tape"></div>
 
   <div class="masthead">
-    <div class="corner"><span>ฟอร์ม รก.๐๑</span><span>สำเนาคู่ฉบับ</span></div>
-    <h1>คำร้องขอเป็นแฟน</h1>
-    <div class="sub">โปรดกรอกด้วยความสัตย์จริง</div>
+    <div class="corner"><span>สารบัญแฟ้ม</span><span>เคาน์เตอร์ ๑</span></div>
+    <h1>ฝ่ายทะเบียนความสัมพันธ์</h1>
+    <div class="sub">กรุณาเลือกเรื่องที่ต้องการดำเนินการ</div>
   </div>
 
   <div class="meta">
-    <span>ผู้ยื่นคำร้อง: <b id="metaFrom"></b></span>
-    <span>สถานะ: <b id="metaStatus">รอพิจารณา</b></span>
+    <span>เจ้าหน้าที่ผู้รับผิดชอบ: <b id="metaOwner"></b></span>
+    <span>เอกสารทั้งหมด: <b id="metaCount"></b></span>
   </div>
 
-  <div class="stage" id="stage"></div>
+  <p class="lede" id="lede"></p>
 
-  <div class="foot">เอกสารฉบับนี้จัดทำขึ้นเพียงหนึ่งฉบับ สำหรับคุณคนเดียว</div>
+  <div class="listhead">รายการแบบฟอร์ม</div>
+  <div id="list"></div>
+
+  <div class="notice">
+    <b>หมายเหตุ</b> — ทุกแบบฟอร์มเก็บคำตอบไว้ในเครื่องของคุณเท่านั้น ไม่มีการส่งข้อมูลออกไปที่ใด
+    กรอกค้างไว้แล้วปิดหน้าไป กลับมากรอกต่อได้
+  </div>
+
+  <div class="foot">
+    ฝ่ายทะเบียนความสัมพันธ์ · เปิดทำการทุกวัน ไม่มีวันหยุด<br>
+    <button class="reset" id="reset">ล้างสถานะเอกสารทั้งหมดในเครื่องนี้</button>
+  </div>
 </div>
 
 <script>
 /* ================================================================
-   แก้ตรงนี้ได้เลย  →  ชื่อเรา / ชื่อเขา / คำถาม
+   แก้ตรงนี้  →  ชื่อเจ้าของแฟ้ม / รายการฟอร์ม
+   เพิ่มฟอร์มใหม่ = เพิ่มอีกบล็อกในอาร์เรย์ FORMS
    ================================================================ */
 const CONFIG = {
-  ผู้ยื่นคำร้อง: "ตอเฮต (宝宝)",        // ชื่อ/ชื่อเล่นของคุณ
-  ชื่อเขา: "ฟรอยด์ (宝贝)",              // เว้นว่างไว้ = ให้เขาพิมพ์เอง
-  ข้อความปิดท้าย: "ตั้งแต่วินาทีนี้ คุณมีสถานะเป็นแฟนของเราอย่างเป็นทางการ ห้ามยกเลิกโดยพลการ",
+  เจ้าของแฟ้ม: "ตอเฮต (宝宝)",
+  ผู้รับเรื่อง: "ฟรอยด์ (宝贝)",   // เว้นว่าง "" ได้
 };
 
-const QUESTIONS = [
-  { q: "น้องตอเฮต มีความน่ารักมาเพียงใดในสายตาพี่ฟรอยด์?",
-    a: ["น่ารัก", "น่ารักมากกก", "น่ารักที่สู๊ดดดด", "น่ารักน้อยกว่าฉันน"] },
-  { q: "พี่ฟรอยด์คิดถึงน้องแมวน้อยคนนี้ถี่เพียงใดในหนึ่งวัน?",
-    a: ["ไม่ค่อยคิดถึงเท่าไหร่ (ไม่ยอมรับว่าคิดถึง)", "ประมาณล้านครั้ง", "คิดถึงตลอดเวลา", "ไม่คิดถึง (ยอมรับว่าคิดถึง)"] },
-  { q: "หากคำร้องขอนี้ได้รับอนุมัติ สิ่งใดที่อยากจะพูดเป็นอย่างแรก",
-    a: ["รักนะเป่าเปาของพี่", "คิดถึงนะเป่าเปา", "รักพี่มั้ยเป่าเปา", "คิดถึงเป่าเป่าที่สุดเลยย"] },
-  { q: "ระหว่างรอยยิ้มตอเฮตกับรอยยิ้มพี่ฟรอยด์ รอยยิ้มใครน่ารักกว่ากัน",
-    a: ["รอยยิ้มฉัน", "รอยยิ้มพี่ฟรอยด์", "รอยยิ้มเป่าเป้ย", "รอยยิ้มแมวๆ"] },
-  { q: "สิ่งที่ท่านต้องการให้ผู้ยื่นคำร้องจัดหาให้ตลอดอายุสัญญา",
-    a: ["การตามใจขั้นสูงสุด", "จุ๊บเหม่งทุกวัน", "Princess Treatment", "กอดๆ กันในทุกวันที่ดีและทุกวันที่แย่"] },
-  { q: "ข้อใดคือจุดที่ท่านให้คะแนนผู้ยื่นคำร้องมากที่สุด",
-    a: ["หล่อเท่ไม่ไหว เอาใจใส่มากๆ", "อยู่ด้วยแล้วสบายใจ", "น่ารักสดใสตัวเล็กตัวน้อย", "ทั้งหมดที่กล่าวมา"] },
-];
-
-const NO_MESSAGES = [
-  "ERROR: ระบบไม่รองรับคำตอบนี้ กรุณาลองใหม่",
-  "แจ้งเตือน: แบบฟอร์มขัดข้อง ปุ่มหดตัวลง ๑ ระดับ",
-  "เจ้าหน้าที่ขอทบทวนคำร้องอีกครั้งหนึ่ง",
-  "ปุ่มนี้เหลือขนาดเล็กมากแล้วนะ",
-  "ถ้าไม่จริง ๆ บอกเขาตรง ๆ ได้เลย เขารับได้",
+const FORMS = [
+  {
+    code: "รก.๐๑",
+    title: "คำร้องขอเป็นแฟน",
+    desc: "แบบสอบถามสั้น ๗ ข้อ ตอบแบบเลือกตัวเลือก จบด้วยการลงความเห็นและตราประทับ",
+    meta: ["๗ ข้อ", "ใช้เวลา ~๒ นาที"],
+    href: "love.html",
+    status: "rk01",           // อ่านสถานะจากฟอร์มนี้
+  },
+  {
+    code: "รก.๐๒",
+    title: "แบบบันทึกประวัติส่วนตัว",
+    desc: "แฟ้มประวัติฉบับเต็ม ๑๒ หมวด พิมพ์ตอบทั้งหมด กรอกค้างไว้แล้วกลับมาต่อได้",
+    meta: ["๑๒๑ ข้อ", "ใช้เวลา ~๒๐ นาที"],
+    href: "profile.html",
+    status: "rk02",
+  },
+  {
+    code: "รก.๐๓",
+    title: "ยังไม่เปิดให้บริการ",
+    desc: "เจ้าหน้าที่กำลังร่างแบบฟอร์มอยู่ โปรดติดตามในโอกาสต่อไป",
+    meta: ["เร็ว ๆ นี้"],
+    locked: true,
+  },
 ];
 
 /* ================================================================ */
 
-const stage = document.getElementById('stage');
-const metaFrom = document.getElementById('metaFrom');
-const metaStatus = document.getElementById('metaStatus');
 const THAI = ['๐','๑','๒','๓','๔','๕','๖','๗','๘','๙'];
 const toThai = n => String(n).split('').map(d => THAI[+d]).join('');
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const read = k => { try{ return JSON.parse(localStorage.getItem(k) || 'null'); }catch(e){ return null; } };
 
-metaFrom.textContent = CONFIG.ผู้ยื่นคำร้อง;
+document.getElementById('metaOwner').textContent = CONFIG.เจ้าของแฟ้ม;
+document.getElementById('metaCount').textContent =
+  toThai(FORMS.filter(f => !f.locked).length) + ' ฉบับ';
 
-let name = CONFIG.ชื่อเขา || '';
-let step = 0;
-const answers = [];
-let noCount = 0;
+document.getElementById('lede').innerHTML =
+  (CONFIG.ผู้รับเรื่อง ? `เรียน <span class="pen">${esc(CONFIG.ผู้รับเรื่อง)}</span><br>` : '') +
+  `มีเอกสารรอคุณดำเนินการอยู่ตามรายการด้านล่าง จะทำฉบับไหนก่อนก็ได้ ` +
+  `ไม่มีกำหนดส่ง แต่เจ้าหน้าที่จะรออยู่`;
 
-function screenIntro(){
-  stage.innerHTML = `
-    <p class="lede">เรียน <span class="pen" id="hi">${esc(name) || 'คุณผู้รับคำร้อง'}</span><br>
-      มีคำร้องหนึ่งฉบับยื่นถึงท่าน โดยผู้ยื่นคำร้องยืนยันว่า<strong>ตั้งใจจริง</strong>
-      กรุณากรอกแบบฟอร์มให้ครบทั้ง ${toThai(QUESTIONS.length + 1)} ข้อ ก่อนลงความเห็น</p>
-    <div class="fieldline">
-      <label>ชื่อผู้รับคำร้อง</label>
-      <input type="text" id="nameInput" placeholder="พิมพ์ชื่อของคุณตรงนี้" value="${esc(name)}" autocomplete="off" spellcheck="false">
-    </div>
-    <div class="notice">หมายเหตุ: คำตอบทั้งหมดจะไม่ถูกส่งไปที่ไหน อยู่แค่ในหน้านี้ ตอบตามใจได้เลย</div>
-    <div class="next"><button class="btn" id="start">เริ่มกรอกแบบฟอร์ม</button></div>`;
-
-  const input = document.getElementById('nameInput');
-  const hi = document.getElementById('hi');
-  input.addEventListener('input', () => {
-    name = input.value.trim();
-    hi.textContent = name || 'คุณผู้รับคำร้อง';
-  });
-  input.addEventListener('keydown', e => { if (e.key === 'Enter') { input.blur(); go(); } });
-  document.getElementById('start').addEventListener('click', go);
-  function go(){ step = 0; screenQuestion(); }
-}
-
-function screenQuestion(){
-  const item = QUESTIONS[step];
-  const no = step + 1;
-  const pct = Math.round(step / (QUESTIONS.length + 1) * 100);
-  stage.innerHTML = `
-    <div class="itemhead"><span class="itemno">ข้อ ${toThai(no)}</span></div>
-    <div class="q">${item.q}</div>
-    <ul class="opts">${item.a.map((t,i) =>
-      `<li><button class="opt" data-i="${i}"><span class="box"></span><span class="txt">${t}</span></button></li>`
-    ).join('')}</ul>
-    <div class="progress">
-      <span class="pct">ข้อ ${toThai(no)} / ${toThai(QUESTIONS.length + 1)}</span>
-      <div class="bar"><span style="width:${pct}%"></span></div>
-    </div>`;
-
-  stage.querySelectorAll('.opt').forEach(btn => {
-    btn.addEventListener('click', () => {
-      stage.querySelectorAll('.opt').forEach(b => b.classList.remove('picked'));
-      btn.classList.add('picked');
-      answers[step] = { q: item.q, a: item.a[+btn.dataset.i] };
-      setTimeout(() => {
-        step++;
-        step < QUESTIONS.length ? screenQuestion() : screenFinal();
-      }, 380);
-    });
-  });
-}
-
-function screenFinal(){
-  const no = QUESTIONS.length + 1;
-  stage.innerHTML = `
-    <div class="itemhead"><span class="itemno">ข้อ ${toThai(no)}</span></div>
-    <div class="q">ท่านยินยอมให้ <span class="pen">${esc(CONFIG.ผู้ยื่นคำร้อง)}</span>
-      มีสถานะเป็น “แฟน” ของท่านอย่างเป็นทางการหรือไม่</div>
-    <div class="finalzone" id="zone">
-      <div class="btnrow">
-        <button class="btn btn-yes" id="yes">ยินยอม</button>
-        <button class="btn btn-no" id="no">ไม่ยินยอม</button>
-      </div>
-      <div class="sysmsg" id="sysmsg"></div>
-    </div>`;
-
-  const yes = document.getElementById('yes');
-  const nope = document.getElementById('no');
-  const msg = document.getElementById('sysmsg');
-  const zone = document.getElementById('zone');
-
-  const dodge = () => {
-    noCount++;
-    const scale = Math.max(0.42, 1 - noCount * 0.14);
-    // จำกัดระยะหนีตามพื้นที่จริงของจอ ปุ่มจะไม่หลุดออกนอกกระดาษ
-    const zoneBox = zone.getBoundingClientRect();
-    const btnBox = nope.getBoundingClientRect();
-    const roomX = Math.max(0, zoneBox.width - btnBox.width - 8);
-    const roomY = Math.max(0, zoneBox.height - btnBox.height - 8);
-    const x = (Math.random() - 0.5) * Math.min(120, roomX);
-    const y = (Math.random() - 0.5) * Math.min(60, roomY);
-    nope.style.transform = `translate(${x}px, ${y}px) scale(${scale}) rotate(${(Math.random()-.5)*14}deg)`;
-    msg.textContent = NO_MESSAGES[Math.min(noCount - 1, NO_MESSAGES.length - 1)];
-    const grow = Math.min(noCount, 4);
-    yes.style.padding = `calc(clamp(13px,3.8vw,15px) + ${grow * 2}px) calc(clamp(26px,8vw,34px) + ${grow * 5}px)`;
-  };
-
-  nope.addEventListener('click', dodge);
-  if (window.matchMedia('(pointer:fine)').matches){
-    nope.addEventListener('mouseenter', dodge);
+function statusOf(kind){
+  if (kind === 'rk01'){
+    const d = read('rk01-status');
+    return d && d.approved
+      ? { text:'อนุมัติแล้ว', cls:'on' }
+      : { text:'รอดำเนินการ', cls:'' };
   }
-  yes.addEventListener('click', screenApproved);
+  if (kind === 'rk02'){
+    const p = read('rk02-progress');
+    if (!p || !p.filled) return { text:'ยังไม่เริ่ม', cls:'' };
+    if (p.done) return { text:'ปิดแฟ้มแล้ว', cls:'on' };
+    return { text:`กรอกแล้ว ${toThai(p.filled)}/${toThai(p.total)}`, cls:'mid' };
+  }
+  return null;
 }
 
-function screenApproved(){
-  metaStatus.textContent = 'อนุมัติแล้ว';
-  metaStatus.style.color = 'var(--stamp)';
-  const today = new Date().toLocaleDateString('th-TH', { day:'numeric', month:'long', year:'numeric' });
-
-  stage.innerHTML = `
-    <div class="stampwrap">
-      <div class="stamp">อนุมัติ<small>APPROVED</small></div>
+document.getElementById('list').innerHTML = FORMS.map(f => {
+  const st = f.locked ? { text:'ปิดปรับปรุง', cls:'' } : statusOf(f.status);
+  const inner = `
+    <div class="top">
+      <span class="code">${f.code}</span>
+      ${st ? `<span class="badge ${st.cls}">${st.text}</span>` : ''}
     </div>
-    <p class="lede" style="text-align:center;margin-top:14px">${esc(CONFIG.ข้อความปิดท้าย)}</p>
-    <div class="summary">
-      <h2>สรุปคำตอบของผู้รับคำร้อง</h2>
-      ${answers.filter(Boolean).map(r =>
-        `<div class="rec"><div class="rq">${r.q}</div><div class="ra">${r.a}</div></div>`).join('')}
-      <div class="rec"><div class="rq">ยินยอมให้ ${esc(CONFIG.ผู้ยื่นคำร้อง)} เป็นแฟนหรือไม่</div><div class="ra">ยินยอม</div></div>
-    </div>
-    <div class="signrow">
-      <div><div class="signline">${esc(name) || '—'}</div>ลงชื่อผู้รับคำร้อง</div>
-      <div><div class="signline">${esc(CONFIG.ผู้ยื่นคำร้อง)}</div>ลงชื่อผู้ยื่นคำร้อง</div>
-    </div>
-    <div class="meta" style="justify-content:center;margin-top:12px">ลงวันที่ ${today}</div>
-    <div class="actions">
-      <button class="btn" id="copy">คัดลอกผลไปส่งให้เขา</button>
+    <h2>${f.title}</h2>
+    <div class="desc">${f.desc}</div>
+    <div class="foot2">
+      ${f.meta.map(m => `<span>${m}</span>`).join('')}
+      ${f.locked ? '' : '<span class="go">เริ่มทำ →</span>'}
     </div>`;
+  return f.locked
+    ? `<div class="card locked">${inner}</div>`
+    : `<a class="card" href="${f.href}">${inner}</a>`;
+}).join('');
 
-  const copyBtn = document.getElementById('copy');
-  copyBtn.addEventListener('click', async () => {
-    const text = [
-      'ผลการพิจารณาคำร้องขอเป็นแฟน (ฟอร์ม รก.๐๑)',
-      `ผู้รับคำร้อง: ${name || '—'}`,
-      `ผลการพิจารณา: อนุมัติ ✅`,
-      `ลงวันที่ ${today}`, '',
-      ...answers.filter(Boolean).map((r,i) => `${toThai(i+1)}. ${r.q}\n   → ${r.a}`),
-    ].join('\n');
-    try {
-      await navigator.clipboard.writeText(text);
-      copyBtn.textContent = 'คัดลอกแล้ว ✓';
-    } catch {
-      const ta = document.createElement('textarea');
-      ta.value = text; document.body.appendChild(ta); ta.select();
-      document.execCommand('copy'); ta.remove();
-      copyBtn.textContent = 'คัดลอกแล้ว ✓';
-    }
-  });
-}
-
-screenIntro();
+document.getElementById('reset').addEventListener('click', () => {
+  if (!confirm('ล้างคำตอบและสถานะของทุกแบบฟอร์มในเครื่องนี้?')) return;
+  try{
+    ['rk01-status','rk02-progress','rk02-draft-v1'].forEach(k => localStorage.removeItem(k));
+  }catch(e){}
+  location.reload();
+});
 </script>
 </body>
 </html>
